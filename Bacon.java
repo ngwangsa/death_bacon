@@ -40,22 +40,24 @@ public class Bacon extends Actor
             if (Greenfoot.isKeyDown("space")) {
                 shoot();
             }
+            
+            // Detects enemy hit
+            if(this.isTouching(Enemy.class)) {
+                this.setImage("bacon.gif");
+                this.removeTouching(Mushroom.class);
+                GreenfootImage image = getImage();
+                image.scale(image.getWidth()/4, image.getHeight()/4);
+                setImage(image);
+                alive = false;
+                GreenfootSound die = new GreenfootSound("pig_die.mp3");
+                die.play();
+            }
+                    
+            // Attack timer
+            timer++;
         }
         
-        // Detects enemy hit
-        if(this.isTouching(Mushroom.class)) {
-            this.setImage("bacon.gif");
-            this.removeTouching(Mushroom.class);
-            GreenfootImage image = getImage();
-            image.scale(image.getWidth()/4, image.getHeight()/4);
-            setImage(image);
-            alive = false;
-            GreenfootSound die = new GreenfootSound("pig_die.mp3");
-            die.play();
-        }
-                
-        // Attack timer
-        timer++;
+        
     }    
     
     public void shoot() {

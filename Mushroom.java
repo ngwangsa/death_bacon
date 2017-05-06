@@ -6,11 +6,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Mushroom extends Actor
+public class Mushroom extends Enemy
 {
     public Mushroom() {
+        //public Enemy(int health, int y_velocity, int x_velocity, int x_vel_counter)
+        super(10,0,80);
         GreenfootImage image = getImage();
-        image.scale(image.getWidth()/15, image.getHeight()/15);
+        image.scale(image.getWidth()/20, image.getHeight()/20);
         setImage(image);
     }
     
@@ -19,19 +21,13 @@ public class Mushroom extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
-    {
-        super.setLocation(super.getX() - 1, super.getY());
-        
+    {   
         // Delete the object if it reaches the end of the screen
         if(super.getX() < 10){
             this.getWorld().removeObject(this);
             return;
         }
-            
-        // Detects bullet hit
-        if(this.isTouching(Bullet.class)) {
-            this.removeTouching(Bullet.class);
-            this.getWorld().removeObject(this);
-        }
+        
+        super.act();
     }    
 }

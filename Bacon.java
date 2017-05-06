@@ -10,10 +10,10 @@ public class Bacon extends Actor
 {
     private boolean alive;
     private int timer = 0;
-    
+    //initializes stuff
     public Bacon() {
         GreenfootImage image = getImage();
-        image.scale(image.getWidth()*2, image.getHeight()*2);
+        image.scale(image.getWidth(), image.getHeight());
         setImage(image);
         alive = true;
     }
@@ -24,12 +24,14 @@ public class Bacon extends Actor
      */
     public void act() 
     {
+        //checks if alive
         if(alive) {
+            //movement
             if (Greenfoot.isKeyDown("up")) {
-                super.setLocation(super.getX(), super. getY()-2);
+                super.setLocation(super.getX(), super. getY()-1);
             }
             if (Greenfoot.isKeyDown("down")) {
-                super.setLocation(super.getX(), super. getY()+2);
+                super.setLocation(super.getX(), super. getY()+1);
             }
             if (Greenfoot.isKeyDown("left")) {
                 super.setLocation(super.getX()-2, super. getY());
@@ -40,26 +42,28 @@ public class Bacon extends Actor
             if (Greenfoot.isKeyDown("space")) {
                 shoot();
             }
+            
+            // Detects enemy hit
+            if(this.isTouching(Enemy.class)) {
+                this.setImage("bacon.gif");
+                this.removeTouching(Mushroom.class);
+                GreenfootImage image = getImage();
+                image.scale(image.getWidth()/4, image.getHeight()/4);
+                setImage(image);
+                alive = false;
+                GreenfootSound die = new GreenfootSound("pig_die.mp3");
+                die.play();
+            }
+                    
+            // Attack timer
+            timer++;
         }
         
-        // Detects enemy hit
-        if(this.isTouching(Mushroom.class)) {
-            this.setImage("bacon.gif");
-            this.removeTouching(Mushroom.class);
-            GreenfootImage image = getImage();
-            image.scale(image.getWidth()/4, image.getHeight()/4);
-            setImage(image);
-            alive = false;
-            GreenfootSound die = new GreenfootSound("pig_die.mp3");
-            die.play();
-        }
-                
-        // Attack timer
-        timer++;
+        
     }    
     
     public void shoot() {
-            
+            //allows to shoot
             if(timer > 100) {
                 this.getWorld().addObject(new Bullet(),super.getX() + 3, super.getY());
                 timer = 0;

@@ -25,6 +25,7 @@ public class Enemy extends Actor
     
     public void act() 
     {
+        //checks if alive and can move enemy
         if (alive)
         {
             if(x_vel_counter >= 100) {

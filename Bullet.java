@@ -10,7 +10,7 @@ public class Bullet extends Actor
 {
     public Bullet() {
         GreenfootImage image = getImage();
-        image.scale(image.getWidth()/2, image.getHeight()/2);
+        image.scale(image.getWidth()/4, image.getHeight()/4);
         setImage(image);
     }
     
@@ -20,8 +20,30 @@ public class Bullet extends Actor
      */
     public void act() 
     {
+        //makes it move
         super.setLocation(super.getX() + 3, super.getY());
         if(super.getX() > getWorld().getWidth() - 10)
             this.getWorld().removeObject(this);
     }    
+    /*
+         * Move to the correct directory (folder).
+    
+    1. Open "Git Bash".
+    2. Use the "cd" command to move to the repository.
+        - cd = change directory
+        - cd Desktop
+    
+    Ensure that you have the latest data.
+    
+    1. Use the "git pull" command
+    
+    How to push to the repository.
+    
+    1. git add .
+    2. git commit -m "<ENTER THE COMMIT MESSAGE>"
+    3. git push
+         * 
+         * 
+         * 
+     */
 }

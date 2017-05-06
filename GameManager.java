@@ -17,7 +17,7 @@ public class GameManager extends Actor
     private Bacon player;
     
     private GreenfootSound bgm;
-    
+    //initializes stuff
     public GameManager(Bacon bacon) {
         enemyCount = 0;
         enemySpawnTimer = 0;
@@ -31,6 +31,7 @@ public class GameManager extends Actor
      * Act - do whatever the EnemySpawner wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    //makes the pig do stuff, soawns enemy
     public void act() 
     {
         // Check if the game is supposed to be running or not
@@ -42,7 +43,7 @@ public class GameManager extends Actor
                 enemySpawnTimer = 0;
             }
             enemySpawnTimer++;
-            if(enemyCount == 5){
+            if(enemyCount == 20){
                 boss_alive = true;
                 if(boss_spawn){
                     spawn(1);
@@ -51,15 +52,16 @@ public class GameManager extends Actor
             }
         }
         else {
+            //music
             bgm.stop();
         }
     }
-    
+    //spawns enemy
     private void spawn(int type) {
         if(type == 0)
             this.getWorld().addObject(new Mushroom(),this.getWorld().getWidth(), getRandomNumber(10, 590));
         else if(type == 1)
-            this.getWorld().addObject(new Boss_1(),this.getWorld().getWidth() - 100, 300);
+            this.getWorld().addObject(new Lizard(),this.getWorld().getWidth() - 100, 300);
         else 
             this.getWorld().addObject(new Mushroom(),this.getWorld().getWidth(), getRandomNumber(10, 590));
         }
@@ -75,6 +77,7 @@ public class GameManager extends Actor
     /**
      * getRandomNumber - return an integer between the given input parameters
      */
+    //rand num
     public int getRandomNumber(int start,int end)
     {
        int normal = Greenfoot.getRandomNumber(end-start+1);

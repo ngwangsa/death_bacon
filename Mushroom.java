@@ -12,7 +12,7 @@ public class Mushroom extends Enemy
         //public Enemy(int health, int y_velocity, int x_velocity, int x_vel_counter)
         super(10,0,80);
         GreenfootImage image = getImage();
-        image.scale(image.getWidth()/15, image.getHeight()/15);
+        image.scale(image.getWidth()/20, image.getHeight()/20);
         setImage(image);
     }
     

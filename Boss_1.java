@@ -8,17 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Boss_1 extends Enemy
 {
-    
-    /**
-     * 
-     */
     public Boss_1() {
-        //public Enemy(int health, int y_velocity, int x_velocity) 
-        super(100,1,60);
-        GreenfootImage image = getImage();
-        image.scale(image.getWidth()*3, image.getHeight()*3);
-        image.mirrorHorizontally();
-        setImage(image);
+        super(1,1,1);
     }
     
     /**
@@ -27,11 +18,6 @@ public class Boss_1 extends Enemy
      */
     public void act() 
     {
-        // Move the object to the beginning of the screen if touches the end before dying.
-        if(super.getX() < 10){
-            super.setLocation(this.getWorld().getWidth() - 5, super.getY());
-        }
-            
-        super.act();
+        // Add your action code here.
     }    
 }

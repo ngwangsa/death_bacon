@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Boss_1 extends Enemy
 {
     public Boss_1() {
-        super(1,1,1);
+        super(300,1,0);
     }
     
     /**

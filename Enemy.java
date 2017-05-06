@@ -42,14 +42,14 @@ public class Enemy extends Actor
             
             // Detects bullet hit
             if(this.isTouching(Bullet.class)) {
+                
                 this.removeTouching(Bullet.class);
-                if(health > 0)
-                    health = health - 10;
-                else
-                {
-                    alive = false;
-                    this.getWorld().removeObject(this);
-                }
+                health = health - 10;
+            }
+            if(health <= 0)
+            {
+                alive = false;
+                this.getWorld().removeObject(this);
             }
         }
     }    

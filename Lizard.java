@@ -33,5 +33,7 @@ public class Lizard extends Enemy
         }
             
         super.act();
-    }    
-}
+    }
+        
+}    
+

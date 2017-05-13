@@ -18,6 +18,6 @@ public class Boss_1 extends Enemy
      */
     public void act() 
     {
-        // Add your action code here.
+        
     }    
 }
